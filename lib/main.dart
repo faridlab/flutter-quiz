@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Quizzy',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Quizzy'),
     );
   }
 }
@@ -48,6 +48,42 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
+var questionTextBox = Expanded(
+  flex: 4,
+  child: Container(
+    padding: EdgeInsets.all(20),
+    alignment: Alignment.topLeft,
+    child: Text(
+      'The first question for you is? bla bla bla bla',
+      style: TextStyle(fontSize: 18),
+    ),
+  ),
+);
+
+var answerChoicesBox =  Expanded(
+  flex: 8,
+  child: Column(
+    children: <Widget>[
+      ListTile(
+        title: Text('Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer', style: TextStyle(fontSize: 16)),
+        leading: Radio(
+          value: 'a',
+          groupValue: 'anu',
+          onChanged: (value) { },
+        ),
+      ),
+      ListTile(
+        title: Text('Thomas Jefferson', style: TextStyle(fontSize: 16)),
+        leading: Radio(
+          value: 'b',
+          groupValue: 'anu',
+          onChanged: (value) { },
+        ),
+      ),
+    ],
+  )
+);
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
@@ -77,32 +113,20 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            questionTextBox,
+            answerChoicesBox,
+            Row(
+              children: <Widget>[
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              ]
             ),
           ],
         ),
