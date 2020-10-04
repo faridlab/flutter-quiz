@@ -49,16 +49,22 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-var questionTextBox = Expanded(
-  flex: 4,
-  child: Container(
-    padding: EdgeInsets.all(20),
-    alignment: Alignment.topLeft,
-    child: Text(
-      'The first question for you is? bla bla bla bla',
-      style: TextStyle(fontSize: 18),
-    ),
-  ),
+var questionTextBox = Container(
+  padding: EdgeInsets.all(20),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'One Piece Quiz',
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      SizedBox(height: 20),
+      Text(
+        'The first question for you is? bla bla bla bla',
+        style: TextStyle(fontSize: 20),
+      ),
+    ],
+  )
 );
 
 var answerChoicesBox =  Expanded(
