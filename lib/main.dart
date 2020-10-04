@@ -120,16 +120,35 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             questionTextBox,
             answerChoicesBox,
-            Row(
-              children: <Widget>[
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-              ]
-            ),
+            // Row(
+            //   children: <Widget>[
+            //   Text(
+            //     '$_counter',
+            //     style: Theme.of(context).textTheme.headline4,
+            //   ),
+            //   ]
+            // ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_back),
+            label: 'Prev',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.not_listed_location),
+            label: '1 of 10',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_forward),
+            label: 'Next',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Colors.amber[800],
+        // onTap: () => {},
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
