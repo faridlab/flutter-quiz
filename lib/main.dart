@@ -50,46 +50,46 @@ class MyHomePage extends StatefulWidget {
 }
 
 var questionTextBox = Container(
-  padding: EdgeInsets.all(20),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        'One Piece Quiz',
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      ),
-      SizedBox(height: 20),
-      Text(
-        'The first question for you is? bla bla bla bla',
-        style: TextStyle(fontSize: 20),
-      ),
-    ],
-  )
-);
+    padding: EdgeInsets.all(20),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'One Piece Quiz',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 20),
+        Text(
+          'The first question for you is? bla bla bla bla',
+          style: TextStyle(fontSize: 20),
+        ),
+      ],
+    ));
 
-var answerChoicesBox =  Expanded(
-  flex: 8,
-  child: Column(
-    children: <Widget>[
-      ListTile(
-        title: Text('Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer', style: TextStyle(fontSize: 16)),
-        leading: Radio(
-          value: 'a',
-          groupValue: 'anu',
-          onChanged: (value) { },
+var answerChoicesBox = Expanded(
+    flex: 8,
+    child: Column(
+      children: <Widget>[
+        ListTile(
+          title: Text(
+              'Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer',
+              style: TextStyle(fontSize: 16)),
+          leading: Radio(
+            value: 'a',
+            groupValue: 'anu',
+            onChanged: (value) {},
+          ),
         ),
-      ),
-      ListTile(
-        title: Text('Thomas Jefferson', style: TextStyle(fontSize: 16)),
-        leading: Radio(
-          value: 'b',
-          groupValue: 'anu',
-          onChanged: (value) { },
+        ListTile(
+          title: Text('Thomas Jefferson', style: TextStyle(fontSize: 16)),
+          leading: Radio(
+            value: 'b',
+            groupValue: 'anu',
+            onChanged: (value) {},
+          ),
         ),
-      ),
-    ],
-  )
-);
+      ],
+    ));
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;

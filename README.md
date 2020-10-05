@@ -1,4 +1,4 @@
-# flutterQuiz
+# Quizzy
 
 A new Flutter project.
 
