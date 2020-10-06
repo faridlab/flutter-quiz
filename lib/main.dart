@@ -41,8 +41,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int index = 0;
   var quizzes;
+  var quiz;
+  var questions;
+  String selected;
+  String choice = 'z';
+
+  String category;
+  String questionText;
+  var question;
+  List choices = [];
 
   @override
   void initState() {
@@ -50,6 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
     widget.quizzes().then((value) {
       setState(() {
         quizzes = value;
+        quiz = quizzes[0];
+        category = quiz['category'];
+        questions = quiz['questions'];
+        question = questions[index];
+        questionText = question['question'];
+        choices = question['choices'];
       });
     });
   }
@@ -61,54 +76,36 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'One Piece Quiz',
+              '$category',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
             Text(
-              'The first question for you is? bla bla bla bla',
+              '$questionText',
               style: TextStyle(fontSize: 20),
             ),
           ],
         ));
   }
 
-  Expanded answerChoicesBox(BuildContext context) {
-    return Expanded(
-        flex: 8,
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              title: Text(
-                  'Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer Multiline answer',
-                  style: TextStyle(fontSize: 16)),
-              leading: Radio(
-                value: 'a',
-                groupValue: 'anu',
-                onChanged: (value) {},
-              ),
-            ),
-            ListTile(
-              title: Text('Thomas Jefferson', style: TextStyle(fontSize: 16)),
-              leading: Radio(
-                value: 'b',
-                groupValue: 'anu',
-                onChanged: (value) {},
-              ),
-            ),
-          ],
-        ));
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  Widget answerChoicesBox(BuildContext context) {
+    return Column(
+        children: choices
+            .map((value) => Row(
+                  children: <Widget>[
+                    Radio(
+                      groupValue: selected,
+                      value: value['key'],
+                      onChanged: (value) {
+                        setState(() {
+                          selected = value;
+                        });
+                      },
+                    ),
+                    Text(value['choise'])
+                  ],
+                ))
+            .toList());
   }
 
   @override
@@ -162,11 +159,6 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedItemColor: Colors.amber[800],
         // onTap: () => {},
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
