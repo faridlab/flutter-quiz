@@ -113,6 +113,18 @@ class _MyHomePageState extends State<MyHomePage> {
             .toList());
   }
 
+  void changePageQuestion(int page) {
+    if (index == 0 && page == -1) return;
+    if (index == (questions.length - 1) && page == 1) return;
+    setState(() {
+      index += page;
+      question = questions[index];
+      selected = question['selected'] ?? 'z';
+      questionText = question['question'];
+      choices = question['choices'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -156,9 +168,12 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Next',
           ),
         ],
-        currentIndex: 0,
+        // currentIndex: 0,
         selectedItemColor: Colors.amber[800],
-        // onTap: () => {},
+        onTap: (int index) {
+          if (index == 0) index = -1;
+          changePageQuestion(index);
+        },
       ),
     );
   }
