@@ -22,6 +22,7 @@ samples, guidance on mobile development, and a full API reference.
 [ ] Add some feature
 [ ] UI/UX touch
 [ ] API
+[ ] Publish to Store (Playstore and AppStore)
 
 ## Show Cases
 ![Quizzy](quzzy-1.png)
