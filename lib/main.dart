@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -75,6 +77,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ));
+  }
+
+  Future<String> _loadFromAsset() async {
+    return await rootBundle.loadString("assets/quiz.json");
+  }
+
+  Future parseJson() async {
+    String jsonString = await _loadFromAsset();
+    final jsonResponse = jsonDecode(jsonString);
+    print(jsonResponse);
   }
 
   void _incrementCounter() {
