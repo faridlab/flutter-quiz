@@ -26,12 +26,33 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+  Future<String> _loadFromAsset() async {
+    return await rootBundle.loadString("assets/quiz.json");
+  }
+
+  Future quizzes() async {
+    String jsonString = await _loadFromAsset();
+    final jsonResponse = jsonDecode(jsonString);
+    return jsonResponse;
+  }
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  var quizzes;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.quizzes().then((value) {
+      setState(() {
+        quizzes = value;
+      });
+    });
+  }
 
   Container questionTextBox(BuildContext context) {
     return Container(
@@ -77,16 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ));
-  }
-
-  Future<String> _loadFromAsset() async {
-    return await rootBundle.loadString("assets/quiz.json");
-  }
-
-  Future parseJson() async {
-    String jsonString = await _loadFromAsset();
-    final jsonResponse = jsonDecode(jsonString);
-    print(jsonResponse);
   }
 
   void _incrementCounter() {
