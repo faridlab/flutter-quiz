@@ -102,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       value: value['key'],
                       onChanged: (value) {
                         setState(() {
+                          quiz['questions'][index]['selected'] = value;
                           selected = value;
                         });
                       },
