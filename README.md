@@ -16,13 +16,13 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ## Milestone
-[ ] Initial Quiz App project
-[ ] Organize files and widges
-[ ] State management
-[ ] Add some feature
-[ ] UI/UX touch
-[ ] API
-[ ] Publish to Store (Playstore and AppStore)
+- [x] Initial Quiz App project
+- [ ] Organize files and widges
+- [ ] State management
+- [ ] Add some feature
+- [ ] UI/UX touch
+- [ ] API
+- [ ] Publish to Store (Playstore and AppStore)
 
 ## Show Cases
 ![Quizzy](quzzy-1.png)
