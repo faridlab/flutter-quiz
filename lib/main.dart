@@ -53,6 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
   var question;
   List choices = [];
 
+  int numberOfQuestions = 0;
+
   @override
   void initState() {
     super.initState();
@@ -65,6 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
         question = questions[index];
         questionText = question['question'];
         choices = question['choices'];
+
+        numberOfQuestions = questions.length;
       });
     });
   }
@@ -145,10 +149,6 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_back),
             label: 'Prev',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.not_listed_location),
-            label: '1 of 10',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_forward),
